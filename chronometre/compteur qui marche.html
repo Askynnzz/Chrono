@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Compteur</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <script>
+            //Initialisation des variables
+            var centiemeSeconde=0
+			var seconde=0
+			var minute=0
+
+            // Fonction javascript qui permet de gérer le compteur
+            function compteur(){
+                centiemeSeconde++ //incrémentation de la variable
+                document.formcompteur.afficheur_compteur.value="  "+centiemeSeconde // Mise à jour de l'affichage avec la valeur du compteur
+                compte=setTimeout('compteur()',10) //relance la fonction compteur toutes les 10 millisecondes
+				
+				if(centiemeSeconde==100){
+				     centiemeSeconde=0;
+					 seconde++//incrémentation de la variable
+				}
+				
+			    if(seconde==60){
+					seconde=0;
+				    minute++;
+					 
+				}
+            
+			     
+				 document.formcompteur.afficheur_compteur2.value="  "+seconde//mise a jour de l'affichage avec la valeur du compteur
+				 //compte=setTimeout('compteur()',10)//relance la fonction compteur toutes les 10 millisecondes
+				
+				 document.formcompteur.afficheur_compteur3.value="  "+minute//mise a jour de l'affichage avec la valeur du compteur
+				 //compte=setTimeout('compteur()',10)//relance la fonction compteur toutes les 10 millisecondes
+				 
+				 
+				
+			}
+				 
+
+            // fonction javascript qui gère la RAZ du compteur
+            function rasee(){
+                clearTimeout(compte)
+                centiemeSeconde=0
+				seconde=0
+				minute=0
+                document.formcompteur.afficheur_compteur.value="  "+centiemeSeconde // affiche la variable compteur 
+				  document.formcompteur.afficheur_compteur2.value="  "+seconde // affiche la variable compteur 
+				document.formcompteur.afficheur_compteur3.value="  "+minute // affiche la variable compteur 
+				
+				
+            }
+			
+			$(document).ready(function() {
+			     $(".button").click(function() {
+				     $(this).children(".ripple").remove();
+				     $(this).append("<div class=\"ripple\"></div>");
+				});
+			});
+			
+			
+        </script>
+		
+		
+	   
+        <h2>Chronomètre</h2>
+        <center><form name="formcompteur">
+            <input type="text" size="3" name="afficheur_compteur3"><a>Minute</a>
+			<input type="text" size="3" name="afficheur_compteur2"><a>Seconde</a>
+			<input type="text" size="3" name="afficheur_compteur"><a>Centième</a>
+            <br />
+            <br /><br />
+            <input class="button" type="button" value="Démarrer le compteur" onclick="compteur()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="button" type="button" value="Remise à zéro" onclick="rasee()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="button" type="button" value="Pause" onclick="clearTimeout(compte)"></form>
+        </center><br />
+    </body>
+</html>

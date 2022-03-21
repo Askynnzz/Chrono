@@ -1,0 +1,76 @@
+body {
+	background-color:#000000
+	
+}
+
+h2 {
+	text-align:center;
+	color:#FFFFFF;
+	padding:50px,;
+	font-size:24px;
+}
+
+a {
+   color:#FFFFFF;
+   font-size:24px;
+}   
+
+
+.button {
+	background:none;
+	width:250px;
+	height:50px;
+	border:5px solid #FFFF00;
+	border-radius: 10px;
+	font-size:20px;
+	font-weight: bold;
+	color: #FFFF00;
+	position:relative;
+	cursor:pointer;
+	box-shadow:0 0 60px -10px #FFFF00;
+	transition: all .3s;
+	 -webkit-transition: box-shadow .3s;
+    transition: box-shadow .3s;
+    -webkit-transform: translate(-50%, -50%, 0);
+    transform: translate(-50%, -50%, 0);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+	
+}
+
+.button:hover {
+	box-shadow:0 0 60px -5px #FFFF00;
+	
+}
+
+.ripple {
+    position: absolute;
+    opacity: 0;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, .35);
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: ripple;
+    animation-name: ripple;
+}
+@-webkit-keyframes ripple {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(165);
+    }
+}
+@keyframes ripple {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(165);
+    }
+}
